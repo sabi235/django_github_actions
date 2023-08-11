@@ -1,0 +1,14 @@
+version: "3"   # Verion of docker-compose we want to use
+services:
+  proj:
+    build:
+      # command that is used to run services
+      context: . # builds the current directory
+    # map port on local machine to port on the docker image
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - .:/project # Updates the image with new changes in the code
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
